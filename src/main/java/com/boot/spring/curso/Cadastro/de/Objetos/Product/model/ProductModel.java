@@ -1,6 +1,10 @@
 package com.boot.spring.curso.Cadastro.de.Objetos.Product.model;
 
+import com.boot.spring.curso.Cadastro.de.Objetos.MyPart.Afiliado;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "solta_a_carta_caralho")
@@ -9,17 +13,23 @@ public class ProductModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String email;
-    private int idade;
 
-    public ProductModel(String nome, String email, int idade) {
-        this.nome = nome;
-        this.email = email;
-        this.idade = idade;
-    }
+    @Column(name = "nome", nullable = false)
+    private String nome;
+
+    @Column(name = "preço", nullable = false)
+    private double preco;
+
+    @Column(name = "afiliação", nullable = true)
+    private Afiliado afiliado;
 
     public ProductModel() {
+    }
+
+    public ProductModel(Long id, String nome, double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
     }
 
     public Long getId() {
@@ -38,19 +48,19 @@ public class ProductModel {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
-    public int getIdade() {
-        return idade;
+    public Afiliado getAfiliado() {
+        return afiliado;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setAfiliado(Afiliado afiliado) {
+        this.afiliado = afiliado;
     }
 }
